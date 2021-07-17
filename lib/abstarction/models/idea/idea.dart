@@ -12,8 +12,12 @@ class Idea {
 
   Idea.fromJson(Map<String, dynamic> json) {
     this.id = json['id'];
-    this.plannerId = json['plannerId'];
-    this.userId = json['userId'];
+    this.plannerId = json['planner_id'];
+    this.userId = json['user_id'];
     this.description = json['description'];
+  }
+
+  String toString() {
+    return 'Id: $id, Planner Id: $plannerId, User Id: $userId, Description: $description';
   }
 }
