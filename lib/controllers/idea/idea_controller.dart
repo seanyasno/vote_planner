@@ -59,4 +59,22 @@ class IdeaController {
       throw error;
     }
   }
+
+  static Future<Idea> addIdea({required Idea idea}) async {
+    try {
+      final response = await Supabase().client.from('ideas').insert({
+        'planner_id': idea.plannerId,
+        'user_id': idea.userId,
+        'description': idea.description,
+      }).execute();
+
+      if (response.error != null) {
+        throw Error();
+      }
+
+      return Idea.fromJson(response.data[0]);
+    } catch (error) {
+      throw error;
+    }
+  }
 }
