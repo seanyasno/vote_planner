@@ -33,7 +33,7 @@ class _PlannerPageState extends State<PlannerPage> {
                 snapshot.hasData ? snapshot.data as List<Idea> : []),
             builder: (context, child) {
               final IdeasProvider ideasProvider =
-                  Provider.of<IdeasProvider>(context);
+                  Provider.of<IdeasProvider>(context, listen: true);
 
               return Scaffold(
                 appBar: AppBar(
@@ -73,6 +73,7 @@ class _PlannerPageState extends State<PlannerPage> {
                   ],
                 ),
                 body: PlannerPageView(
+                  planner: widget.planner,
                   ideas: ideasProvider.ideas,
                 ),
                 floatingActionButton: FloatingActionButton(

@@ -13,4 +13,10 @@ class IdeasProvider with ChangeNotifier {
     notifyListeners();
     return _ideas;
   }
+
+  List<Idea> resetIdeas({required List<Idea> newIdeas}) {
+    _ideas = newIdeas;
+    notifyListeners();
+    return _ideas;
+  }
 }
