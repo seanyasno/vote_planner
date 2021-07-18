@@ -13,4 +13,10 @@ class PlannersProvider with ChangeNotifier {
     notifyListeners();
     return _planners;
   }
+
+  List<Planner> addPlanner({required Planner newPlanner}) {
+    _planners.add(newPlanner);
+    notifyListeners();
+    return _planners;
+  }
 }

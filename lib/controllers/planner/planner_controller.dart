@@ -48,4 +48,27 @@ class PlannerController {
       throw error;
     }
   }
+
+  static Future<Planner> addPlanner(
+      {required String plannerTitle, required User user}) async {
+    try {
+      final response = await Supabase()
+          .client
+          .from('planners')
+          .insert({'title': plannerTitle}).execute();
+
+      if (response.error != null) {
+        throw Error();
+      }
+
+      await Supabase().client.from('planner_users').insert({
+        'planner_id': response.data[0]['id'],
+        'user_id': user.id!,
+      }).execute();
+
+      return Planner.fromJson(response.data[0]);
+    } catch (error) {
+      throw error;
+    }
+  }
 }
