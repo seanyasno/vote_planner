@@ -71,4 +71,41 @@ class PlannerController {
       throw error;
     }
   }
+
+  static Future<Planner?> joinPlanner(
+      {required String plannerId, required User user}) async {
+    try {
+      final r = await Supabase()
+          .client
+          .from('planner_users')
+          .select('*')
+          .eq('planner_id', plannerId)
+          .eq('user_id', user.id)
+          .execute();
+
+      if (r.error != null || (r.data as List).length > 0) {
+        return null;
+      }
+
+      final response = await Supabase().client.from('planner_users').insert({
+        'planner_id': plannerId,
+        'user_id': user.id!,
+      }).execute();
+
+      if (response.error != null) {
+        return null;
+      }
+
+      final res = await Supabase()
+          .client
+          .from('planners')
+          .select('*')
+          .eq('id', response.data[0]['planner_id'])
+          .execute();
+
+      return Planner.fromJson(res.data[0]);
+    } catch (error) {
+      throw error;
+    }
+  }
 }
