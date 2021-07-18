@@ -67,7 +67,7 @@ class _PlannersPageState extends State<PlannersPage> {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 Text(
-                                  'Have a new idea?',
+                                  'Want to decide on a new plan?',
                                   textAlign: TextAlign.start,
                                   style: Theme.of(context).textTheme.headline6,
                                 ),
@@ -81,7 +81,7 @@ class _PlannersPageState extends State<PlannersPage> {
                                   minLines: 1,
                                   maxLines: 6,
                                   decoration: InputDecoration(
-                                    hintText: 'Write your new idea here',
+                                    hintText: 'Write your new plan title here',
                                   ),
                                 ),
                               ],
