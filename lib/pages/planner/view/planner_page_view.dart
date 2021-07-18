@@ -17,7 +17,14 @@ class PlannerPageView extends StatelessWidget {
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: ideas.map((idea) => IdeaItem(idea: idea)).toList(),
+        children: ideas
+            .map(
+              (idea) => Padding(
+                padding: EdgeInsets.only(bottom: 8),
+                child: IdeaItem(idea: idea),
+              ),
+            )
+            .toList(),
       ),
     );
   }

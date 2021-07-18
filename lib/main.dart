@@ -1,5 +1,8 @@
+import 'package:vote_planner/abstarction/models/models.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:vote_planner/providers/providers.dart';
 import 'package:vote_planner/pages/pages.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'config/config.dart';
 
@@ -10,7 +13,21 @@ void main() {
     debug: const bool.fromEnvironment('SUPABASE_DEBUG', defaultValue: false),
   );
 
-  runApp(MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => UserProvider(
+            user: User(
+              id: 'f381af3b-6cd8-4c0c-88f1-6cea5e4c9bef',
+              name: 'Sean Yasno',
+            ),
+          ),
+        ),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -22,7 +39,13 @@ class MyApp extends StatelessWidget {
       darkTheme: darkThemeData,
       themeMode: ThemeMode.light,
       debugShowCheckedModeBanner: false,
-      home: PlannerPage(),
+      home: PlannerPage(
+        planner: Planner(
+          id: 'f6d62926-bd79-497e-81ea-057f0c2e9ef9',
+          creation: DateTime.now(),
+          title: 'Test title',
+        ),
+      ),
     );
   }
 }

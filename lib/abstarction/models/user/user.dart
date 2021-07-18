@@ -8,4 +8,8 @@ class User {
     this.id = json['id'];
     this.name = json['name'];
   }
+
+  String toString() {
+    return 'id: $id, name: $name';
+  }
 }

@@ -1,7 +1,7 @@
 class Planner {
-  String? id;
-  String? title;
-  DateTime? creation;
+  late String id;
+  late String title;
+  late DateTime creation;
 
   Planner({required this.id, required this.title, required this.creation});
 

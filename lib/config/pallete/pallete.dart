@@ -1,5 +1,17 @@
 import 'package:flutter/material.dart';
 
+final AppBarTheme darkAppBarTheme = AppBarTheme(
+  centerTitle: true,
+  brightness: Brightness.dark,
+  elevation: 0,
+);
+
+final AppBarTheme lightAppBarTheme = AppBarTheme(
+  centerTitle: true,
+  brightness: Brightness.light,
+  elevation: 0,
+);
+
 final ColorScheme darkColorScheme = ColorScheme.dark(
   primary: Color(0xFF2A9D8F),
   primaryVariant: Color(0xFF264653),
@@ -31,6 +43,7 @@ final ColorScheme lightColorScheme = ColorScheme.light(
 );
 
 final ThemeData darkThemeData = ThemeData(
+  colorScheme: darkColorScheme,
   primaryColor: Color(0xFF2A9D8F),
   primaryColorDark: Color(0xFF227E72),
   primaryColorLight: Color(0xFF7FC4BC),
@@ -54,10 +67,11 @@ final ThemeData darkThemeData = ThemeData(
   errorColor: Color(0xFFE76F51),
   primaryColorBrightness: Brightness.dark,
   brightness: Brightness.dark,
-  appBarTheme: AppBarTheme(brightness: Brightness.dark),
+  appBarTheme: darkAppBarTheme,
 );
 
 final ThemeData lightThemeData = ThemeData(
+  colorScheme: lightColorScheme,
   primaryColor: Color(0xFF2A9D8F),
   primaryColorDark: Color(0xFF1D6E64),
   primaryColorLight: Color(0xFF7FC4BC),
@@ -81,5 +95,5 @@ final ThemeData lightThemeData = ThemeData(
   errorColor: Color(0xFFE76F51),
   primaryColorBrightness: Brightness.light,
   brightness: Brightness.light,
-  appBarTheme: AppBarTheme(brightness: Brightness.light),
+  appBarTheme: lightAppBarTheme,
 );
