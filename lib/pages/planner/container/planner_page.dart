@@ -1,11 +1,11 @@
-import 'package:provider/provider.dart';
-import 'package:vote_planner/controllers/controllers.dart';
 import 'package:vote_planner/controllers/planner/planner_controller.dart';
+import 'package:vote_planner/controllers/controllers.dart';
 import 'package:vote_planner/abstarction/abstraction.dart';
+import 'package:vote_planner/providers/providers.dart';
 import 'package:vote_planner/pages/pages.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:vote_planner/providers/providers.dart';
 
 class PlannerPage extends StatefulWidget {
   final Planner planner;
