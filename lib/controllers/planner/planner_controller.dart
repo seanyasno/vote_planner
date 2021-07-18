@@ -1,5 +1,5 @@
-import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:vote_planner/abstarction/abstraction.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class PlannerController {
   static Future<List<Idea>> getIdeasByPlannerId(String plannerId) async {
@@ -19,7 +19,7 @@ class PlannerController {
           .map((idea) => Idea.fromJson(idea))
           .toList();
     } catch (error) {
-      throw Error();
+      throw error;
     }
   }
 }
