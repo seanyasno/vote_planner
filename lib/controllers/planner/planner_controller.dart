@@ -41,13 +41,10 @@ class PlannerController {
         return [];
       }
 
-      print(response.data);
-
       return (response.data as List<dynamic>)
           .map((element) => Planner.fromJson(element['planners']))
           .toList();
     } catch (error) {
-      print(error);
       throw error;
     }
   }
