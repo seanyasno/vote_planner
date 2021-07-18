@@ -35,7 +35,11 @@ class PlannerPageView extends StatelessWidget {
         onRefresh: () async {
           final List<Idea> refreshedIdeas =
               await PlannerController.getIdeasByPlannerId(planner.id);
-          ideasProvider.resetIdeas(newIdeas: refreshedIdeas);
+          ideasProvider.resetIdeas(newIdeas: []);
+          await Future.delayed(
+            Duration(milliseconds: 500),
+            () => ideasProvider.resetIdeas(newIdeas: refreshedIdeas),
+          );
         },
       ),
     );
