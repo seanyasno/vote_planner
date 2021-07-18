@@ -61,7 +61,11 @@ class _IdeaItemBottomState extends State<IdeaItemBottom> {
                       backgroundColor: Colors.white,
                       child: CircleAvatar(
                         radius: 13,
-                        child: Text(widget.votedUsers[0].name![0]),
+                        child: Text(
+                          widget.votedUsers[0].name![0],
+                          style: TextStyle(
+                              color: Theme.of(context).primaryColorDark),
+                        ),
                       ),
                     ),
                   )),

@@ -18,7 +18,10 @@ class UserStack extends StatelessWidget {
             backgroundColor: Colors.white,
             child: CircleAvatar(
               radius: 13,
-              child: Text(users[0].name![0].toUpperCase()),
+              child: Text(
+                users[0].name![0].toUpperCase(),
+                style: TextStyle(color: Theme.of(context).primaryColorDark),
+              ),
             ),
           ),
         ),
@@ -28,7 +31,10 @@ class UserStack extends StatelessWidget {
             backgroundColor: Colors.white,
             child: CircleAvatar(
               radius: 13,
-              child: Text(users[0].name![1].toUpperCase()),
+              child: Text(
+                users[0].name![1].toUpperCase(),
+                style: TextStyle(color: Theme.of(context).primaryColorDark),
+              ),
             ),
           ),
         ),
@@ -38,7 +44,10 @@ class UserStack extends StatelessWidget {
             backgroundColor: Colors.white,
             child: CircleAvatar(
               radius: 13,
-              child: Text(users[0].name![2].toUpperCase()),
+              child: Text(
+                users[0].name![2].toUpperCase(),
+                style: TextStyle(color: Theme.of(context).primaryColorDark),
+              ),
             ),
           ),
         ),
