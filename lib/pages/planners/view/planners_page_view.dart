@@ -138,6 +138,7 @@ class _PlannersPageViewState extends State<PlannersPageView> {
             }
 
             return Card(
+              color: Theme.of(context).backgroundColor,
               elevation: 3,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),

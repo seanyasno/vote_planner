@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:vote_planner/controllers/planner/planner_controller.dart';
 import 'package:vote_planner/controllers/controllers.dart';
 import 'package:vote_planner/abstarction/abstraction.dart';
@@ -46,6 +47,30 @@ class _PlannerPageState extends State<PlannerPage> {
                   iconTheme: IconThemeData(
                     color: Theme.of(context).primaryColorLight,
                   ),
+                  actions: [
+                    InkWell(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(200),
+                        ),
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 20,
+                        ),
+                        child: Icon(Icons.content_copy),
+                      ),
+                      borderRadius: BorderRadius.circular(200),
+                      onTap: () {
+                        Clipboard.setData(
+                            ClipboardData(text: widget.planner.id));
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: Text(
+                            "${widget.planner.title}'s id copied",
+                            textAlign: TextAlign.center,
+                          ),
+                        ));
+                      },
+                    ),
+                  ],
                 ),
                 body: PlannerPageView(
                   ideas: ideasProvider.ideas,
