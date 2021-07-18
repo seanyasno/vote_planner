@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 final AppBarTheme darkAppBarTheme = AppBarTheme(
   centerTitle: true,
@@ -68,6 +69,7 @@ final ThemeData darkThemeData = ThemeData(
   primaryColorBrightness: Brightness.dark,
   brightness: Brightness.dark,
   appBarTheme: darkAppBarTheme,
+  textTheme: GoogleFonts.ralewayTextTheme(),
 );
 
 final ThemeData lightThemeData = ThemeData(
@@ -96,4 +98,5 @@ final ThemeData lightThemeData = ThemeData(
   primaryColorBrightness: Brightness.light,
   brightness: Brightness.light,
   appBarTheme: lightAppBarTheme,
+  textTheme: GoogleFonts.ralewayTextTheme(),
 );
