@@ -8,6 +8,10 @@ class Planner {
   Planner.fromJson(Map<String, dynamic> json) {
     this.id = json['id'];
     this.title = json['title'];
-    this.creation = json['creation'];
+    this.creation = DateTime.parse(json['creation']);
+  }
+
+  String toString() {
+    return '{id: $id, title: $title, creation: $creation}';
   }
 }

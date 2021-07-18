@@ -43,13 +43,19 @@ class _PlannerPageState extends State<PlannerPage> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
+                  iconTheme: IconThemeData(
+                    color: Theme.of(context).primaryColorLight,
+                  ),
                 ),
                 body: PlannerPageView(
                   ideas: ideasProvider.ideas,
                 ),
                 floatingActionButton: FloatingActionButton(
-                  child: Icon(Icons.add),
-                  backgroundColor: Theme.of(context).colorScheme.primary,
+                  child: Icon(
+                    Icons.add,
+                    color: Theme.of(context).primaryColorDark,
+                  ),
+                  backgroundColor: Theme.of(context).primaryColor,
                   onPressed: () async {
                     await showDialog(
                       context: context,
@@ -139,6 +145,9 @@ class _PlannerPageState extends State<PlannerPage> {
                 color: Color(0xFFc0e2de),
                 fontWeight: FontWeight.bold,
               ),
+            ),
+            iconTheme: IconThemeData(
+              color: Theme.of(context).primaryColorLight,
             ),
           ),
           body: Container(

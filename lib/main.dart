@@ -39,13 +39,14 @@ class MyApp extends StatelessWidget {
       darkTheme: darkThemeData,
       themeMode: ThemeMode.light,
       debugShowCheckedModeBanner: false,
-      home: PlannerPage(
-        planner: Planner(
-          id: 'f6d62926-bd79-497e-81ea-057f0c2e9ef9',
-          creation: DateTime.now(),
-          title: 'Test title',
-        ),
-      ),
+      home: PlannersPage(),
+      // home: PlannerPage(
+      // planner: Planner(
+      //   id: 'f6d62926-bd79-497e-81ea-057f0c2e9ef9',
+      //   creation: DateTime.now(),
+      //   title: 'Test title',
+      // ),
+      // ),
     );
   }
 }

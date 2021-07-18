@@ -22,4 +22,33 @@ class PlannerController {
       throw error;
     }
   }
+
+  static Future<List<Planner>> getPlannersByUserId(
+      {required String userId}) async {
+    try {
+      final response = await Supabase()
+          .client
+          .from('planner_users')
+          .select('planners (*)')
+          .eq('user_id', userId)
+          .execute();
+
+      if (response.error != null) {
+        throw Error();
+      }
+
+      if (response.data.length == 0) {
+        return [];
+      }
+
+      print(response.data);
+
+      return (response.data as List<dynamic>)
+          .map((element) => Planner.fromJson(element['planners']))
+          .toList();
+    } catch (error) {
+      print(error);
+      throw error;
+    }
+  }
 }
