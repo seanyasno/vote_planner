@@ -90,7 +90,7 @@ class _HomePageState extends State<HomePage> {
                             final User newUser =
                                 await UserController.insertUser(
                                     name: _textEditingController.text);
-                            userProvider.setUser(user: newUser);
+                            await userProvider.setUser(user: newUser);
                             Navigator.of(context).pushReplacement(
                               MaterialPageRoute(
                                 builder: (context) => PlannersPage(),

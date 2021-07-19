@@ -13,8 +13,6 @@ class UserController {
         throw Error();
       }
 
-      print(response.data[0]);
-
       return User.fromJson(response.data[0]);
     } catch (error) {
       throw error;

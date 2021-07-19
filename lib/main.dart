@@ -17,12 +17,7 @@ void main() {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => UserProvider(
-            user: User(
-              id: 'f381af3b-6cd8-4c0c-88f1-6cea5e4c9bef',
-              name: 'Sean Yasno',
-            ),
-          ),
+          create: (_) => UserProvider(),
         ),
       ],
       child: MyApp(),
@@ -33,13 +28,34 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final UserProvider userProvider = Provider.of<UserProvider>(context);
+
     return MaterialApp(
       title: 'Vote Planner',
       theme: lightThemeData,
       darkTheme: darkThemeData,
       themeMode: ThemeMode.light,
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: FutureBuilder(
+        future: userProvider.init(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return PlannersPage();
+          }
+
+          if (snapshot.data == null) {
+            return HomePage();
+          }
+
+          return Scaffold(
+            body: Container(
+              child: Center(
+                child: CircularProgressIndicator(),
+              ),
+            ),
+          );
+        },
+      ),
     );
   }
 }
