@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:vote_planner/abstarction/abstraction.dart';
+import 'package:vote_planner/controllers/controllers.dart';
 import 'package:vote_planner/pages/pages.dart';
+import 'package:vote_planner/providers/providers.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -14,6 +18,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final UserProvider userProvider = Provider.of<UserProvider>(context);
+
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       body: Container(
@@ -78,14 +84,19 @@ class _HomePageState extends State<HomePage> {
                           borderRadius: BorderRadius.circular(10),
                         ),
                       ),
-                      onPressed: () {
+                      onPressed: () async {
                         if (_formKey.currentState!.validate()) {
-                          print('here');
-                          Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(
-                              builder: (context) => PlannersPage(),
-                            ),
-                          );
+                          try {
+                            final User newUser =
+                                await UserController.insertUser(
+                                    name: _textEditingController.text);
+                            userProvider.setUser(user: newUser);
+                            Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                builder: (context) => PlannersPage(),
+                              ),
+                            );
+                          } catch (error) {}
                         }
                       },
                       child: Text('Continue'.toUpperCase()),
