@@ -1,4 +1,3 @@
-import 'package:vote_planner/abstarction/models/models.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:vote_planner/providers/providers.dart';
 import 'package:vote_planner/pages/pages.dart';

@@ -34,6 +34,7 @@ class PlannerController {
           .execute();
 
       if (response.error != null) {
+        print(response.error?.message);
         throw Error();
       }
 
