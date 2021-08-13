@@ -1,3 +1,5 @@
+import 'package:vote_planner/mocks/providers/providers.dart';
+import 'package:vote_planner/abstarction/abstraction.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:vote_planner/providers/providers.dart';
 import 'package:vote_planner/pages/pages.dart';
@@ -6,6 +8,10 @@ import 'package:flutter/material.dart';
 import 'config/config.dart';
 
 void main() {
+  final useMock = Config.instance.config.useMock;
+
+  print(useMock);
+
   Supabase(
     url: const String.fromEnvironment('SUPABASE_URL', defaultValue: ''),
     anonKey: const String.fromEnvironment('SUPABASE_ANONKEY', defaultValue: ''),
@@ -16,7 +22,12 @@ void main() {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => UserProvider(),
+          create: (_) => useMock
+              ? UserProviderMock(
+                  user: User(
+                      id: '3b0a23d8-a4ba-4b30-852e-9f24a19b7c8d',
+                      name: 'Test User'))
+              : UserProvider(),
         ),
       ],
       child: MyApp(),

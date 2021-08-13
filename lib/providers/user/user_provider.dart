@@ -18,7 +18,6 @@ class UserProvider with ChangeNotifier {
 
     if (userId.isNotEmpty && userName.isNotEmpty) {
       _user = User(id: userId, name: userName);
-      // notifyListeners();
       return _user;
     }
 
