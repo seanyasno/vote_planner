@@ -13,9 +13,9 @@ void main() {
   print(useMock);
 
   Supabase(
-    url: const String.fromEnvironment('SUPABASE_URL', defaultValue: ''),
-    anonKey: const String.fromEnvironment('SUPABASE_ANONKEY', defaultValue: ''),
-    debug: const bool.fromEnvironment('SUPABASE_DEBUG', defaultValue: false),
+    url: Config.instance.config.supabase.url,
+    anonKey: Config.instance.config.supabase.anonKey,
+    debug: Config.instance.config.supabase.debug,
   );
 
   runApp(
