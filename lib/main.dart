@@ -10,8 +10,6 @@ import 'config/config.dart';
 void main() {
   final useMock = Config.instance.config.useMock;
 
-  print(useMock);
-
   Supabase(
     url: Config.instance.config.supabase.url,
     anonKey: Config.instance.config.supabase.anonKey,
