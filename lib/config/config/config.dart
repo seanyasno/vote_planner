@@ -1,5 +1,5 @@
+import 'package:vote_planner/abstarction/models/models.dart';
 import 'package:vote_planner/abstarction/abstraction.dart';
-import 'package:vote_planner/abstarction/models/configs/development/development_config.dart';
 
 class Config {
   static Config? _instance;
@@ -10,6 +10,9 @@ class Config {
     switch (environment) {
       case 'develop':
         config = DevelopmentConfig();
+        break;
+      case 'production':
+        config = ProdcutionConfig();
         break;
     }
   }
