@@ -1,6 +1,12 @@
 abstract class ConfigBase {
-  abstract final bool useMock;
-  abstract final SupabaseConfig supabase;
+  final bool useMock = const bool.fromEnvironment('USE_MOCK', defaultValue: false);
+  SupabaseConfig get supabase {
+    return SupabaseConfig(
+      url: const String.fromEnvironment('SUPABASE_URL', defaultValue: ''), 
+      anonKey: const String.fromEnvironment('SUPABASE_ANONKEY', defaultValue: ''), 
+      debug: const bool.fromEnvironment('SUPABASE_DEBUG', defaultValue: false),
+    );
+  }
 }
 
 class SupabaseConfig  {
