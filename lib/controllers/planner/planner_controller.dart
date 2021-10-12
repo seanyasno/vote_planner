@@ -4,7 +4,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 class PlannerController {
   static Future<List<Idea>> getIdeasByPlannerId(String plannerId) async {
     try {
-      final response = await Supabase()
+      final response = await Supabase.instance
           .client
           .from('ideas')
           .select('*')
@@ -26,7 +26,7 @@ class PlannerController {
   static Future<List<Planner>> getPlannersByUserId(
       {required String userId}) async {
     try {
-      final response = await Supabase()
+      final response = await Supabase.instance
           .client
           .from('planner_users')
           .select('planners (*)')
@@ -53,7 +53,7 @@ class PlannerController {
   static Future<Planner> addPlanner(
       {required String plannerTitle, required User user}) async {
     try {
-      final response = await Supabase()
+      final response = await Supabase.instance
           .client
           .from('planners')
           .insert({'title': plannerTitle}).execute();
@@ -62,7 +62,7 @@ class PlannerController {
         throw Error();
       }
 
-      await Supabase().client.from('planner_users').insert({
+      await Supabase.instance.client.from('planner_users').insert({
         'planner_id': response.data[0]['id'],
         'user_id': user.id!,
       }).execute();
@@ -76,7 +76,7 @@ class PlannerController {
   static Future<Planner?> joinPlanner(
       {required String plannerId, required User user}) async {
     try {
-      final r = await Supabase()
+      final r = await Supabase.instance
           .client
           .from('planner_users')
           .select('*')
@@ -88,7 +88,7 @@ class PlannerController {
         return null;
       }
 
-      final response = await Supabase().client.from('planner_users').insert({
+      final response = await Supabase.instance.client.from('planner_users').insert({
         'planner_id': plannerId,
         'user_id': user.id!,
       }).execute();
@@ -97,7 +97,7 @@ class PlannerController {
         return null;
       }
 
-      final res = await Supabase()
+      final res = await Supabase.instance
           .client
           .from('planners')
           .select('*')

@@ -4,7 +4,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 class IdeaController {
   static Future<List<User>> getUsersByIdeaId(String ideaId) async {
     try {
-      final response = await Supabase()
+      final response = await Supabase.instance
           .client
           .from('idea_voters')
           .select('users (*)')
@@ -29,7 +29,7 @@ class IdeaController {
 
   static Future upvoteIdea(String ideaId, String userId) async {
     try {
-      final response = await Supabase().client.from('idea_voters').insert({
+      final response = await Supabase.instance.client.from('idea_voters').insert({
         'idea_id': ideaId,
         'user_id': userId,
       }).execute();
@@ -44,7 +44,7 @@ class IdeaController {
 
   static Future removeVote({required ideaId, required userId}) async {
     try {
-      final response = await Supabase()
+      final response = await Supabase.instance
           .client
           .from('idea_voters')
           .delete()
@@ -62,7 +62,7 @@ class IdeaController {
 
   static Future<Idea> addIdea({required Idea idea}) async {
     try {
-      final response = await Supabase().client.from('ideas').insert({
+      final response = await Supabase.instance.client.from('ideas').insert({
         'planner_id': idea.plannerId,
         'user_id': idea.userId,
         'description': idea.description,

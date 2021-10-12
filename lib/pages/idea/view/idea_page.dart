@@ -28,6 +28,7 @@ class IdeaPage extends StatelessWidget {
           children: [
             Card(
               elevation: 3,
+              margin: EdgeInsets.zero,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
