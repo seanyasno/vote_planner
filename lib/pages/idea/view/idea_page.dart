@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:vote_planner/abstarction/abstraction.dart';
 import 'package:vote_planner/controllers/controllers.dart';
 
@@ -28,10 +29,10 @@ class IdeaPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Card(
-              elevation: 3,
+              elevation: 4,
               margin: EdgeInsets.zero,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(15),
               ),
               color: Theme.of(context).backgroundColor,
               child: FutureBuilder<User>(
@@ -40,19 +41,26 @@ class IdeaPage extends StatelessWidget {
                   if (snapshot.hasData) {
                     return Container(
                       padding: EdgeInsets.symmetric(
-                        horizontal: 15,
-                        vertical: 10,
+                        horizontal: 18,
+                        vertical: 20,
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(snapshot.data!.name!),
+                          Text(
+                            snapshot.data!.name!,
+                            style: TextStyle(
+                                fontSize: Theme.of(context)
+                                    .textTheme
+                                    .subtitle1
+                                    ?.fontSize),
+                          ),
                           Text(
                             idea.description!,
                             style: TextStyle(
                               fontSize: Theme.of(context)
                                   .textTheme
-                                  .bodyText2
+                                  .headline5
                                   ?.fontSize,
                             ),
                           ),
@@ -61,7 +69,41 @@ class IdeaPage extends StatelessWidget {
                     );
                   }
 
-                  return Container();
+                  return Container(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 18,
+                      vertical: 20,
+                    ),
+                    child: Column(
+                      children: [
+                        Shimmer.fromColors(
+                          child: Container(
+                            height: 20,
+                            decoration: BoxDecoration(
+                              color: Colors.grey[300]!,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                          baseColor: Colors.grey[300]!,
+                          highlightColor: Colors.grey[100]!,
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Shimmer.fromColors(
+                          child: Container(
+                            height: 60,
+                            decoration: BoxDecoration(
+                              color: Colors.grey[300]!,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                          baseColor: Colors.grey[300]!,
+                          highlightColor: Colors.grey[100]!,
+                        ),
+                      ],
+                    ),
+                  );
                 },
               ),
             ),
