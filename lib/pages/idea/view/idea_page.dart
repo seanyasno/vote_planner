@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vote_planner/abstarction/abstraction.dart';
+import 'package:vote_planner/controllers/controllers.dart';
 
 class IdeaPage extends StatelessWidget {
   final Idea idea;
@@ -33,14 +34,35 @@ class IdeaPage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
               ),
               color: Theme.of(context).backgroundColor,
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                child: Text(
-                  idea.description!,
-                  style: TextStyle(
-                    fontSize: Theme.of(context).textTheme.bodyText2?.fontSize,
-                  ),
-                ),
+              child: FutureBuilder<User>(
+                future: UserController.getUserById(userId: idea.userId!),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 15,
+                        vertical: 10,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(snapshot.data!.name!),
+                          Text(
+                            idea.description!,
+                            style: TextStyle(
+                              fontSize: Theme.of(context)
+                                  .textTheme
+                                  .bodyText2
+                                  ?.fontSize,
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  }
+
+                  return Container();
+                },
               ),
             ),
           ],
